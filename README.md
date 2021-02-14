@@ -14,6 +14,7 @@
 | kana_first_name    | string | null: false      |
 | birthday           | date   | null: false      |
 | main_sport         | string | null: false      |
+<!-- メインスポーツ→趣味（複数選択可）を実装予定 -->
 
 has_many :sports
 
