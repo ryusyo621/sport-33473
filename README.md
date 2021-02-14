@@ -1,24 +1,60 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options          |
+| ------------------ | ------ | ---------------- |
+| nickname           | string | null: false      |
+| email              | string | uniqueness: true |
+| phone_number       | string | uniqueness: true |
+| password_encrypted | string | null: false      |
+| last_name          | string | null: false      |
+| first_name         | string | null: false      |
+| kana_last_name     | string | null: false      |
+| kana_first_name    | string | null: false      |
+| birthday           | date   | null: false      |
+| main_sport         | string | null: false      |
+<!-- メインスポーツ→趣味（複数選択可）を実装予定 -->
 
-* Ruby version
+has_many :sports
 
-* System dependencies
+## sports テーブル
 
-* Configuration
+| Column       | Type       | Options           |
+| ------------ | ---------- | ----------------- |
+| sport_name   | string     | null: false       |
+| sport_text   | text       | null: false       |
+| category_id  | integer    | null: false       |
+| state_id     | integer    | null: false       |
+|              | integer    | null: false       |
+| area_id      | integer    | null: false       |
+|              | integer    | null: false       |
+| price        | integer    | null: false       |
+| user         | references | foreign_key: true |
 
-* Database creation
+belongs_to :user 
+has_one :purchase
 
-* Database initialization
+## purchases テーブル
 
-* How to run the test suite
+| Column    | Type       | Options           |
+| --------- | ---------- | ----------------- |
+| user      | references | foreign_key: true |
+| sport      | references | foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+belongs_to :user 
+belongs_to :item 
+has_one :delivery
+<!-- 
+## deliveries テーブル
+| Column        | Type       | Options           |
+| ------------- | ---------- | ----------------- |
+| post_number   | string     | null: false       |
+| area_id       | integer    | null: false       |
+| city          | string     | null: false       |
+| address       | string     | null: false       |
+| building      | string     |                   |
+| phone_number  | string     | null: false       |
+| purchase      | references | foreign_key: true |
 
-* Deployment instructions
-
-* ...
+belongs_to :purchase -->
