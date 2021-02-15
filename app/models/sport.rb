@@ -5,7 +5,6 @@ class Sport < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :area
   belongs_to :category
-  belongs_to :state
   belongs_to :price_pattern
 
   with_options presence: true do

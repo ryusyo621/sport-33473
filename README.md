@@ -14,33 +14,48 @@
 | kana_first_name    | string | null: false      |
 | birthday           | date   | null: false      |
 | main_sport         | string | null: false      |
-<!-- メインスポーツ→趣味（複数選択可）を実装予定 -->
-
-has_many :sports
+<!-- ニックネーム
+Eメール
+電話番号
+パスワード
+名字
+名前
+名字（フリガナ）
+名前（フリガナ）
+誕生日
+お気に入りジャンル
+has_many :sports -->
 
 ## sports テーブル
 
-| Column       | Type       | Options           |
-| ------------ | ---------- | ----------------- |
-| sport_name   | string     | null: false       |
-| sport_text   | text       | null: false       |
-| category_id  | integer    | null: false       |
-| state_id     | integer    | null: false       |
-|              | integer    | null: false       |
-| area_id      | integer    | null: false       |
-|              | integer    | null: false       |
-| price        | integer    | null: false       |
-| user         | references | foreign_key: true |
+| Column           | Type       | Options           |
+| ---------------- | ---------- | ----------------- |
+| title            | string     | null: false       |
+| sport_text       | text       | null: false       |
+| category_id      | integer    | null: false       |
+| area_id          | integer    | null: false       |
+| price_pattern_id | integer    | null: false       |
+| price            | integer    | null: false       |
+| user             | references | foreign_key: true |
+<!-- 画像 -->
+<!-- タイトル -->
+<!-- 活動内容 -->
+<!-- カテゴリー -->
+<!-- 活動地域 -->
+<!-- 参加費 -->
+<!-- 参加費 -->
+
 
 belongs_to :user 
 has_one :purchase
 
-## purchases テーブル
+## messages テーブル
 
 | Column    | Type       | Options           |
 | --------- | ---------- | ----------------- |
+| message   | string     | null:false |
 | user      | references | foreign_key: true |
-| sport      | references | foreign_key: true |
+| sport     | references | foreign_key: true |
 
 belongs_to :user 
 belongs_to :item 
