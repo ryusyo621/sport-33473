@@ -5,7 +5,6 @@ class Sport < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :area
   belongs_to :category
-  belongs_to :price_pattern
 
   with_options presence: true do
     validates :title
@@ -16,7 +15,6 @@ class Sport < ApplicationRecord
     with_options numericality: { other_than: 1 } do
       validates :category_id
       validates :area_id
-      validates :price_pattern_id
     end
   end
 

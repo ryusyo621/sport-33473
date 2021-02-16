@@ -105,6 +105,10 @@
   resize: none;
 }
 
+.items-text2 {
+  display: block;
+}
+
 .items-explain {
   margin-top: 2vh;
 }

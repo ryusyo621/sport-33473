@@ -37,10 +37,8 @@ ActiveRecord::Schema.define(version: 2021_02_14_101112) do
     t.string "title", null: false
     t.text "sport_text", null: false
     t.integer "category_id", null: false
-    t.string "activity", null: false
     t.integer "area_id", null: false
-    t.integer "price_pattern_id", null: false
-    t.integer "price", null: false
+    t.string "price", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

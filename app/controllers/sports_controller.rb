@@ -1,6 +1,7 @@
 class SportsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   def index
+    @sport = Sport.all
   end
 
   def new
@@ -18,6 +19,6 @@ class SportsController < ApplicationController
 
   private
   def sport_params
-    params.require(:sport).permit(:sport_name, :sport_text, :category_id, :state_id, :area_id, :price_pattern, :price, :image).merge(user_id: current_user.id)
+    params.require(:sport).permit(:title, :sport_text, :category_id, :area_id, :price, :image).merge(user_id: current_user.id)
   end
 end
