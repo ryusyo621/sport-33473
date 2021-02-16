@@ -140,18 +140,17 @@ RSpec.describe User, type: :model do
         @user.main_sport = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Main sport can't be blank")
-      end 
+      end
       it '電話番号が必須であること' do
         @user.phone_number = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Phone number can't be blank")
-      end 
+      end
       it '電話番号が全角数字では登録できないこと' do
         @user.phone_number = '０９０１２３４５６７８'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Phone number is invalid")
-      end 
-
+        expect(@user.errors.full_messages).to include('Phone number is invalid')
+      end
     end
   end
 end

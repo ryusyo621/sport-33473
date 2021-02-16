@@ -18,6 +18,7 @@ class SportsController < ApplicationController
   end
 
   private
+
   def sport_params
     params.require(:sport).permit(:title, :sport_text, :category_id, :area_id, :price, :image).merge(user_id: current_user.id)
   end

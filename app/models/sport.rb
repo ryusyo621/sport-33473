@@ -17,5 +17,4 @@ class Sport < ApplicationRecord
       validates :area_id
     end
   end
-
 end

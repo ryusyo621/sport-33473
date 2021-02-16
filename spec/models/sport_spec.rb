@@ -35,7 +35,7 @@ RSpec.describe Sport, type: :model do
       it 'カテゴリーが「1」では登録できないこと' do
         @sport.category_id = '1'
         @sport.valid?
-        expect(@sport.errors.full_messages).to include("Category must be other than 1")
+        expect(@sport.errors.full_messages).to include('Category must be other than 1')
       end
       it '活動地域が必須であること' do
         @sport.area_id = ''
@@ -45,7 +45,7 @@ RSpec.describe Sport, type: :model do
       it '活動地域が「1」では登録できないこと' do
         @sport.area_id = '1'
         @sport.valid?
-        expect(@sport.errors.full_messages).to include("Area must be other than 1")
+        expect(@sport.errors.full_messages).to include('Area must be other than 1')
       end
       it '参加費が必須であること' do
         @sport.price = ''
