@@ -6,10 +6,17 @@ RSpec.describe Sport, type: :model do
   end
   describe '募集新規登録' do
     context '募集登録できること' do
-
+      it '全て正常で入力内容に問題ない' do
+        expect(@sport).to be_valid
+      end
     end
 
     context '募集登録できないこと' do
+      it '画像を1枚つけることが必須であること' do
+        @sport.image = nil
+        @sport.valid?
+        expect(@sport.errors.full_messages).to include("Image can't be blank")
+      end
       it 'タイトルが必須であること' do
         @sport.title = ''
         @sport.valid?
