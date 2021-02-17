@@ -1,7 +1,7 @@
 class SportsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   def index
-    @sport = Sport.all
+    @sport = Sport.order("created_at DESC")
   end
 
   def new
@@ -14,6 +14,31 @@ class SportsController < ApplicationController
       redirect_to root_path
     else
       render 'new'
+    end
+  end
+
+  def show
+    @sport = Sport.find(params[:id])
+  end
+
+  def edit
+    @sport = Sport.find(params[:id])
+  end
+
+  def update
+    @sport = Sport.find(params[:id])
+    if @sport.update(sport_params)
+      redirect_to sport_path(@sport)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @sport.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
 
