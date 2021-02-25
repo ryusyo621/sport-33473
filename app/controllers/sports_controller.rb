@@ -19,6 +19,8 @@ class SportsController < ApplicationController
 
   def show
     @sport = Sport.find(params[:id])
+    @message = Message.new
+    @messages = @sport.messages.includes(:user)
   end
 
   def edit

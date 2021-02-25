@@ -23,9 +23,9 @@
         <p class="or-text">or</p>
         <%= link_to "削除", sport_path(@sport.id), method: :delete, class:"item-destroy" %>
       <% else %>
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
-      <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
+        <%# 商品が売れていない場合はこちらを表示しましょう %>
+        <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
+        <%# //商品が売れていない場合はこちらを表示しましょう %>
       <% end %>
     <% end %>
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
@@ -75,19 +75,33 @@
   <%# /商品の概要 %>
 
   <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
+    <%# <form> %>
+    <%= form_with model: [@sport, @message], local: true do |form| %>
+      <%# <textarea class="comment-text"></textarea> %>
+      <%= form.text_area :comment, placeholder: "コメントを入力して下さい", class:"comment-text" %>
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
-      <button type="submit" class="comment-btn">
+      <%# <button type="submit" class="comment-btn"> %>
+      <%= form.submit "コメントする", class: "comment-btn" %>
         <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
-  </div>
+        <%# <span>コメントする<span> %>
+      <%# </button> %>
+     <%# </form> %>
+    <% end %>
+    </div>
+    <div class="comments-list">
+      <h4 class = "comment-title">＜コメント一覧＞</h4>
+      <% @messages.each do |message| %>
+        <p>
+          <strong><%= link_to message.user.nickname, "#" %>：</strong>
+          <%= message.comment %>
+        </p>
+      <% end %>
+    </div>
+
   <div class="links">
     <a href="#" class="change-item-btn">
       ＜ 前の商品
