@@ -98,6 +98,10 @@
         <p>
           <strong><%= link_to message.user.nickname, "#" %>：</strong>
           <%= message.comment %>
+          <%# <div class="message-date"> %>
+          <!-- 投稿した時刻を出力する -->
+          <%= l message.created_at %>
+          <%# </div> %>
         </p>
       <% end %>
     </div>
