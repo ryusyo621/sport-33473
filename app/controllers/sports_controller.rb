@@ -5,6 +5,7 @@ class SportsController < ApplicationController
   def index
     @sports = Sport.all
     @sport = Sport.order("created_at DESC")
+    set_sport_column 
   end
 
   def new
@@ -59,5 +60,9 @@ class SportsController < ApplicationController
 
   def search_sport
     @p = Sport.ransack(params[:q])
+  end
+
+  def set_sport_column
+    @sport_name = Sport.select("category_id.name").distinct
   end
 end
