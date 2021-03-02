@@ -7,7 +7,7 @@
       <%= search_form_for @p, url: sports_search_path do |f| %>
         <%= f.collection_select :category_id_eq, Category.all, :id, :name, {}, class: "input-box" %>
       <% end %>
-      <%# <%= link_to(new_sport_path, class: 'purchase-btn') do %> %>
+      <%# <%= link_to(new_sport_path, class: 'purchase-btn') do %> 
       <%= button_tag type: :submit, class:"search-button" do %>
           <%= image_tag "search.png" , class:"search-icon" %>
       <% end %>
