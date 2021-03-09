@@ -73,7 +73,7 @@ a {
 
 .reason-lists {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
@@ -178,7 +178,7 @@ a {
 
 .feature-contents>.title::after {
   content: '';
-  width: 70px;
+  width: 100px;
   height: 4px;
   background-color: #3ccace;
   position: absolute;

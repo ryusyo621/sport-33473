@@ -1,7 +1,11 @@
 class SportsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  before_action :search_sport, only: [:index, :search, :show]
+
   def index
-    @sport = Sport.order("created_at DESC")
+    @sports = Sport.all
+    @sport = Sport.order('created_at DESC')
+    set_sport_column
   end
 
   def new
@@ -44,9 +48,21 @@ class SportsController < ApplicationController
     end
   end
 
+  def search
+    @results = @p.result.includes(:category)
+  end
+
   private
 
   def sport_params
     params.require(:sport).permit(:title, :sport_text, :category_id, :area_id, :price, :image).merge(user_id: current_user.id)
+  end
+
+  def search_sport
+    @p = Sport.ransack(params[:q])
+  end
+
+  def set_sport_column
+    @sport_name = Sport.select('category_id.name').distinct
   end
 end
