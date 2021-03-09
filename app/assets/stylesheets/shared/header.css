@@ -42,6 +42,7 @@
   border: 0;
   cursor: pointer;
   background-color: #3ccace;
+  background-image: url("../images/search.png");
   padding: 8px;
 }
 

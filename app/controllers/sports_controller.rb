@@ -4,8 +4,8 @@ class SportsController < ApplicationController
 
   def index
     @sports = Sport.all
-    @sport = Sport.order("created_at DESC")
-    set_sport_column 
+    @sport = Sport.order('created_at DESC')
+    set_sport_column
   end
 
   def new
@@ -63,6 +63,6 @@ class SportsController < ApplicationController
   end
 
   def set_sport_column
-    @sport_name = Sport.select("category_id.name").distinct
+    @sport_name = Sport.select('category_id.name').distinct
   end
 end
